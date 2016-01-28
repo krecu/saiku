@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="A86DE648-1BDC-726E-8E37-B94376E2AAE0" type="QM" connection="arm" cube="[Показатели ГК]" catalog="ARM" schema="ARM">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Наименование ГК" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Наименование ГК" type="member" node="[Наименование ГК].[Контракт ГД РС РФ]" operator="MEMBER" />
+              <Selection dimension="Наименование ГК" type="member" node="[Наименование ГК].[Контракт МинТруд]" operator="MEMBER" />
+              <Selection dimension="Наименование ГК" type="member" node="[Наименование ГК].[Контракт ФАНО]" operator="MEMBER" />
+              <Selection dimension="Наименование ГК" type="member" node="[Наименование ГК].[Контракт Федеральная служба по финансовому мониторингу]" operator="MEMBER" />
+              <Selection dimension="Наименование ГК" type="member" node="[Наименование ГК].[Контракт Федеральное агентство по рыболовству]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Год реализации ГК" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Год реализации ГК" type="member" node="[Год реализации ГК].[2011]" operator="MEMBER" />
+              <Selection dimension="Год реализации ГК" type="member" node="[Год реализации ГК].[2013]" operator="MEMBER" />
+              <Selection dimension="Год реализации ГК" type="member" node="[Год реализации ГК].[2014]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT
+NON EMPTY {Hierarchize({{[Год реализации ГК].[2011], [Год реализации ГК].[2013], [Год реализации ГК].[2014]}})} ON COLUMNS,
+NON EMPTY {Hierarchize({{[Наименование ГК].[Контракт ГД РС РФ], [Наименование ГК].[Контракт МинТруд], [Наименование ГК].[Контракт ФАНО], [Наименование ГК].[Контракт Федеральная служба по финансовому мониторингу], [Наименование ГК].[Контракт Федеральное агентство по рыболовству]}})} ON ROWS
+FROM [Показатели ГК]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="chart" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.ui.render.type" value="pie" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="763DD74B-D0B9-0A48-8C41-797254918B96" type="QM" connection="arm" cube="[Мероприятия]" catalog="ARM" schema="ARM">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Наименование мероприятия" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Наименование мероприятия" type="member" node="[Наименование мероприятия].[Эксплуатация автоматизированной информационной системы приема и обработки обращений граждан в ФГУ МСЭ]" operator="MEMBER" />
+              <Selection dimension="Наименование мероприятия" type="member" node="[Наименование мероприятия].[Эксплуатация центра мониторинга и координации управления критическими ресурсами национального сегмента сети Интернет]" operator="MEMBER" />
+              <Selection dimension="Наименование мероприятия" type="member" node="[Наименование мероприятия].[Эксплуатация автоматизированной информационной системы ГИМС МЧС России (АИС ГИМС МЧС России)]" operator="MEMBER" />
+              <Selection dimension="Наименование мероприятия" type="member" node="[Наименование мероприятия].[Разработка АИС Государственной инспекции по маломерным судам ]" operator="MEMBER" />
+              <Selection dimension="Наименование мероприятия" type="member" node="[Наименование мероприятия].[Разработка автоматизированной информационной системы приема и обработки обращений граждан в ФГУ МСЭ]" operator="MEMBER" />
+              <Selection dimension="Наименование мероприятия" type="member" node="[Наименование мероприятия].[Разработка автоматизированной информационной системы ГИМС МЧС России (АИС ГИМС МЧС России)]" operator="MEMBER" />
+              <Selection dimension="Наименование мероприятия" type="member" node="[Наименование мероприятия].[Проектирование АИС Государственной инспекции по маломерным судам ]" operator="MEMBER" />
+              <Selection dimension="Наименование мероприятия" type="member" node="[Наименование мероприятия].[Проектирование автоматизированной информационной системы приема и обработки обращений граждан в ФГУ МСЭ]" operator="MEMBER" />
+              <Selection dimension="Наименование мероприятия" type="member" node="[Наименование мероприятия].[Проектирование автоматизированной информационной системы ГИМС МЧС России (АИС ГИМС МЧС России)]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Ответственный департамент" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Ответственный департамент" type="member" node="[Ответственный департамент].[Департамент координации информатизации]" operator="MEMBER" />
+              <Selection dimension="Ответственный департамент" type="member" node="[Ответственный департамент].[#null]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[План]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Касса]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT
+NON EMPTY {Hierarchize({{[Ответственный департамент].[Департамент координации информатизации], [Ответственный департамент].[#null]}})} ON COLUMNS,
+NON EMPTY {Hierarchize({{[Наименование мероприятия].[Эксплуатация автоматизированной информационной системы приема и обработки обращений граждан в ФГУ МСЭ], [Наименование мероприятия].[Эксплуатация центра мониторинга и координации управления критическими ресурсами национального сегмента сети Интернет], [Наименование мероприятия].[Эксплуатация автоматизированной информационной системы ГИМС МЧС России (АИС ГИМС МЧС России)], [Наименование мероприятия].[Разработка АИС Государственной инспекции по маломерным судам ], [Наименование мероприятия].[Разработка автоматизированной информационной системы приема и обработки обращений граждан в ФГУ МСЭ], [Наименование мероприятия].[Разработка автоматизированной информационной системы ГИМС МЧС России (АИС ГИМС МЧС России)], [Наименование мероприятия].[Проектирование АИС Государственной инспекции по маломерным судам ], [Наименование мероприятия].[Проектирование автоматизированной информационной системы приема и обработки обращений граждан в ФГУ МСЭ], [Наименование мероприятия].[Проектирование автоматизированной информационной системы ГИМС МЧС России (АИС ГИМС МЧС России)]}})} ON ROWS
+FROM [Мероприятия]
+WHERE {[Measures].[План], [Measures].[Касса]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="chart" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.ui.render.type" value="pie" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

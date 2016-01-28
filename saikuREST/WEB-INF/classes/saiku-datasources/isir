@@ -1,0 +1,8 @@
+# Mondrian on MySQL
+# ----------------------------------------------
+type=OLAP
+name=isir
+driver=mondrian.olap4j.MondrianOlap4jDriver
+location=jdbc:mondrian:Jdbc=jdbc:mysql://192.168.99.100/arm_isir;Catalog=res:isir/ISIR.xml;JdbcDrivers=com.mysql.jdbc.Driver;
+username=root
+password=b60046247b

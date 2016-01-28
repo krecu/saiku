@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="115ABB1A-EF6F-22EC-B98F-1B05A3A8BCD6" type="QM" connection="arm" cube="[Объекты учета]" catalog="ARM" schema="ARM">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Вид ОУ" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[АИС типовой деятельности]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Внешняя телекоммуникационная инфраструктура]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Внутренняя телекоммуникационная инфраструктура]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Документарное обеспечение деятельности]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Другие ИС специальной деятельности]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[ИС документооборота]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[ИС информационного обеспечения деятельности в части нормативно-справочного обеспечения]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[ИС управления материальными и нематериальными активами]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[ИС управления финансами]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[ИС, обеспечивающие информационное взаимодействие]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[ИС, связанные с  управлением персоналом]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Организация информационного взаимодействия]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Официальный сайт]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Программно-аппаратные комплексы информационной безопасности]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Прочее]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Рабочие станции]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Рабочие станции общего назначения]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Серверное оборудование не входящее в состав ЦОД]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Серверное оборудование, не входящее в состав ЦОД]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Системы информационного обеспечения деятельности]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Системы информационного обеспечения деятельности в части информационно-правового обеспечения]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Средства печати и копирования данных, издательские Системы]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Телекоммуникационная инфраструктура, обеспечивающая внешнюю связь]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Управление материальными и нематериальными активами]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Управление персоналом]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Управление финансами]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[Центры обработки данных]" operator="MEMBER" />
+              <Selection dimension="Вид ОУ" type="member" node="[Вид ОУ].[ЦОД]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="ОГВ" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="ОГВ" type="level" node="[ОГВ].[Все ОГВ]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Плановая стоимость]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT
+NON EMPTY {Hierarchize({[ОГВ].[All ОГВs]})} ON COLUMNS,
+NON EMPTY {Hierarchize({{[Вид ОУ].[АИС типовой деятельности], [Вид ОУ].[Внешняя телекоммуникационная инфраструктура], [Вид ОУ].[Внутренняя телекоммуникационная инфраструктура], [Вид ОУ].[Документарное обеспечение деятельности], [Вид ОУ].[Другие ИС специальной деятельности], [Вид ОУ].[ИС документооборота], [Вид ОУ].[ИС информационного обеспечения деятельности в части нормативно-справочного обеспечения], [Вид ОУ].[ИС управления материальными и нематериальными активами], [Вид ОУ].[ИС управления финансами], [Вид ОУ].[ИС, обеспечивающие информационное взаимодействие], [Вид ОУ].[ИС, связанные с  управлением персоналом], [Вид ОУ].[Организация информационного взаимодействия], [Вид ОУ].[Официальный сайт], [Вид ОУ].[Программно-аппаратные комплексы информационной безопасности], [Вид ОУ].[Прочее], [Вид ОУ].[Рабочие станции], [Вид ОУ].[Рабочие станции общего назначения], [Вид ОУ].[Серверное оборудование не входящее в состав ЦОД], [Вид ОУ].[Серверное оборудование, не входящее в состав ЦОД], [Вид ОУ].[Системы информационного обеспечения деятельности], [Вид ОУ].[Системы информационного обеспечения деятельности в части информационно-правового обеспечения], [Вид ОУ].[Средства печати и копирования данных, издательские Системы], [Вид ОУ].[Телекоммуникационная инфраструктура, обеспечивающая внешнюю связь], [Вид ОУ].[Управление материальными и нематериальными активами], [Вид ОУ].[Управление персоналом], [Вид ОУ].[Управление финансами], [Вид ОУ].[Центры обработки данных], [Вид ОУ].[ЦОД]}})} ON ROWS
+FROM [Объекты учета]
+WHERE {[Measures].[Плановая стоимость]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="chart" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.ui.render.type" value="pie" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

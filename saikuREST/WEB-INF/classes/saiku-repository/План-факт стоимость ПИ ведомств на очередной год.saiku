@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="660AEDBA-E9BA-83E9-AACA-317CF934CA32" type="QM" connection="arm" cube="[Отчеты]" catalog="armgosbookru" schema="armgosbookru">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="ОГВ" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="ОГВ" type="level" node="[ОГВ].[Краткое наименование ОГВ]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[План на очередной финансовый год]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Факт на очередной финансовый год]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT
+NON EMPTY {[Measures].[План на очередной финансовый год], [Measures].[Факт на очередной финансовый год]} ON COLUMNS,
+NON EMPTY {Hierarchize({[ОГВ].[Краткое наименование ОГВ].Members})} ON ROWS
+FROM [Отчеты]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

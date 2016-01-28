@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="0D17B772-B7DA-1A7F-A41D-C0893641A544" type="QM" connection="arm" cube="[Проекты]" catalog="ARM" schema="ARM">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Государственная программа" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Государственная программа" type="member" node="[Государственная программа].[Защита населения и территорий от чрезвычайных ситуаций, обеспечение пожарной безопасности и безопасности людей на водных объектах]" operator="MEMBER" />
+              <Selection dimension="Государственная программа" type="member" node="[Государственная программа].[Информационное общество (2011 - 2020 годы)]" operator="MEMBER" />
+              <Selection dimension="Государственная программа" type="member" node="[Государственная программа].[Развитие авиационной промышленности на 2013 - 2025 годы]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Наименование проекта" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Наименование проекта" type="level" node="[Наименование проекта].[Наименование]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT
+NON EMPTY {Hierarchize({[Наименование проекта].[Наименование].Members})} ON COLUMNS,
+NON EMPTY {Hierarchize({{[Государственная программа].[Защита населения и территорий от чрезвычайных ситуаций, обеспечение пожарной безопасности и безопасности людей на водных объектах], [Государственная программа].[Информационное общество (2011 - 2020 годы)], [Государственная программа].[Развитие авиационной промышленности на 2013 - 2025 годы]}})} ON ROWS
+FROM [Проекты]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

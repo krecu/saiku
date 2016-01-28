@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="4880C031-4170-0A43-B91E-8068EE5F353C" type="QM" connection="foodmart" cube="[Sales 2]" catalog="FoodMart" schema="FoodMart">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Sales Count]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Store Sales]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true" limitFunction="TopCount" limitFunctionN="10">
+        <Dimensions>
+          <Dimension name="Gender" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Gender" type="level" node="[Gender].[(All)]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT
+NON EMPTY TopCount({Hierarchize({[Gender].[All Gender]})}, 10) ON COLUMNS,
+NON EMPTY {[Measures].[Sales Count], [Measures].[Store Sales]} ON ROWS
+FROM [Sales 2]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

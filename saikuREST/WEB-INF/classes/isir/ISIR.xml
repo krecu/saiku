@@ -1,0 +1,50 @@
+<Schema name="isir">
+    <Cube name="Report" visible="true" cache="true" enabled="true">
+
+        <Table name="region" alias="">
+        </Table>
+
+        <Dimension type="StandardDimension" visible="true" name="Region">
+            <Hierarchy visible="true" hasAll="true" allMemberName="Region">
+                <Level name="Name" visible="true" column="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" />
+                <Level name="Code" visible="true" column="code" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" />
+            </Hierarchy>
+        </Dimension>
+
+        <Dimension name="Common component" highCardinality="false"  foreignKey="id" type="StandardDimension" visible="true">
+            <Hierarchy visible="true" allMemberName="Common component" hasAll="true" primaryKey="region_id" primaryKeyTable="common_component">
+                <Join leftKey="index_id" rightKey="id">
+                    <Table name="common_component"/>
+                    <Table name="component"/>
+                </Join>
+                <Level name="component name" table="component" column="name"/>
+                <Level name="component value" table="common_component" column="value"/>
+                <Level name="component year" table="common_component" column="year" uniqueMembers="true"/>
+            </Hierarchy>
+        </Dimension>
+
+        <Dimension name="Common index" highCardinality="false"  foreignKey="id" type="StandardDimension" visible="true">
+            <Hierarchy visible="true" allMemberName="Common index" hasAll="true" primaryKey="region_id" primaryKeyTable="common_indices">
+                <Join leftKey="index_id" rightKey="id">
+                    <Table name="common_indices"/>
+                    <Table name="indices"/>
+                </Join>
+                <Level name="index name" table="indices" column="name"/>
+                <Level name="index value" table="common_indices" column="value"/>
+                <Level name="index year" table="common_indices" column="year" uniqueMembers="true"/>
+            </Hierarchy>
+        </Dimension>
+
+        <Dimension name="Common shower" highCardinality="false" foreignKey="id" type="StandardDimension" visible="true">
+            <Hierarchy visible="true" allMemberName="Common shower" hasAll="true" primaryKey="region_id" primaryKeyTable="common_shower">
+                <Join leftKey="index_id" rightKey="id">
+                    <Table name="common_shower"/>
+                    <Table name="shower"/>
+                </Join>
+                <Level name="shower name" table="shower" column="name"/>
+                <Level name="shower value" table="common_shower" column="value"/>
+                <Level name="shower year" table="common_shower" column="year" uniqueMembers="true"/>
+            </Hierarchy>
+        </Dimension>
+    </Cube>
+</Schema>
